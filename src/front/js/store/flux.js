@@ -1,6 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
-    store: {},
+    store: {
+      token: "",
+      verifiedUser: false,
+    },
     actions: {
       // Use getActions to call a function within a fuction
       getToken: (email, password) => {
@@ -16,7 +19,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           redirect: "follow",
         })
           .then((response) => response.json())
-          .then((result) => console.log(result))
+          .then((result) => setStore({ token: result.token }))
+          .catch((err) => console.log(err));
+      },
+      getVerified: () => {
+        fetch(process.env.BACKEND_URL + "/api/protected", {
+          method: "GET",
+          headers: {
+            authorization: "Bearer " + getStore().token,
+          },
+          redirect: "follow",
+        })
+          .then((res) => (res.ok ? setStore({ verifiedUser: true }) : ""))
           .catch((err) => console.log(err));
       },
     },

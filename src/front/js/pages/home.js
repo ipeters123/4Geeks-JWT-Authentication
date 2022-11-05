@@ -1,12 +1,23 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    actions.getVerified();
+  }, [store.token]);
+
+  useEffect(() => {
+    if (store.verifiedUser) {
+      navigate("/single");
+    }
+  }, [store.verifiedUser]);
 
   return (
     <div className="d-flex" style={{ height: "80vh" }}>
