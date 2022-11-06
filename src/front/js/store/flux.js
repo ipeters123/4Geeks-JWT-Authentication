@@ -26,7 +26,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         fetch(process.env.BACKEND_URL + "/api/protected", {
           method: "GET",
           headers: {
-            authorization: "Bearer " + getStore().token,
+            Authorization: "Bearer " + getStore().token,
           },
           redirect: "follow",
         })
