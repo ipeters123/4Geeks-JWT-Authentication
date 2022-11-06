@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           redirect: "follow",
         })
           .then((response) => response.json())
-          .then((result) => setStore({ token: result.token }))
+          .then((result) => setStore({ token: result.access_token }))
           .catch((err) => console.log(err));
       },
       getVerified: () => {

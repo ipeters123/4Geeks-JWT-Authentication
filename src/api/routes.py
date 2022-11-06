@@ -47,5 +47,5 @@ def protected():
     current_user_id = get_jwt_identity()
     #user = User.query.get(current_user_id)
     user = User.query.filter_by(email=current_user_id).first()
-
+    
     return jsonify({"msg": "ok"}), 200
