@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Home = () => {
+  // setting our hooks to use again later in the code //
   const { store, actions } = useContext(Context);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
