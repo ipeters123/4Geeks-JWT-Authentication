@@ -10,7 +10,7 @@ export const Single = (props) => {
 
   return (
     <div className="jumbotron">
-      <h1>Authenticaded</h1>
+      <h1>Authenticated</h1>
     </div>
   );
 };
